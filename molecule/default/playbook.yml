@@ -4,7 +4,7 @@
   become: true
 
   vars:
-    pip_install_packages:
+    pip_3_packages:
       # Test installing a specific version of a package.
       - name: ipaddress
         version: "1.0.18"
@@ -17,4 +17,4 @@
       when: ansible_os_family == 'Debian'
 
   roles:
-    - role: geerlingguy.pip
+    - role: HoucemEddine.pip

@@ -1,5 +1,6 @@
 # Ansible Role: Pip (for Python)
 
+This is forked from https://github.com/geerlingguy/ansible-role-pip
 [![Build Status](https://travis-ci.org/geerlingguy/ansible-role-pip.svg?branch=master)](https://travis-ci.org/geerlingguy/ansible-role-pip)
 
 An Ansible Role that installs [Pip](https://pip.pypa.io) on Linux.
@@ -10,21 +11,13 @@ On RedHat/CentOS, you may need to have EPEL installed before running this role. 
 
 ## Role Variables
 
-Available variables are listed below, along with default values (see `defaults/main.yml`):
+The role will install python 2 or python 3 packages using pip or pip3 acconrdingly
 
-    pip_package: python-pip
-
-The name of the packge to install to get `pip` on the system. You can set to `python3-pip`, for example, when using Python 3 on Ubuntu.
-
-    pip_executable: pip
-
-The role will try to autodetect the pip executable based on the `pip_package` (e.g. `pip` for Python 2 and `pip3` for Python 3). You can also override this explicitly, e.g. `pip_executable: pip3.6`.
-
-    pip_install_packages: []
-
+    pip_2_packages: []
+    pip_3_packages: []
 A list of packages to install with pip. Examples below:
 
-    pip_install_packages:
+    pip_2_packages:
       # Specify names and versions.
       - name: docker
         version: "1.2.3"
@@ -60,12 +53,15 @@ None.
     - hosts: all
     
       vars:
-        pip_install_packages:
-          - name: docker
+        pip_2_packages:
+          - name: ansible
           - name: awscli
-    
+        
+        pip_3_packages:
+          - name: awscli
+          - 
       roles:
-        - geerlingguy.pip
+        - HoucemEddine.pip
 
 ## License
 
